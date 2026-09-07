@@ -1,0 +1,98 @@
+/* ================================
+   USER LAYOUT
+================================ */
+
+.user-layout {
+  min-height: 100vh;
+  width: 100%;
+  background: #f6f7f9;
+}
+
+/* ================================
+   MAIN CONTENT
+================================ */
+
+.user-content {
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ================================
+   3 LINE MENU BUTTON
+================================ */
+
+.sidebar-toggle {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+
+  width: 44px;
+  height: 44px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #111;
+  color: #fff;
+
+  font-size: 24px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1100;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+
+  transition: 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+  background: #333;
+}
+
+/* ================================
+   OVERLAY
+================================ */
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  z-index: 900;
+}
+
+/* ================================
+   DESKTOP
+================================ */
+
+@media (min-width: 901px) {
+
+  .sidebar-toggle {
+    display: flex;
+  }
+
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+  .sidebar-toggle {
+    top: 15px;
+    left: 15px;
+
+    width: 42px;
+    height: 42px;
+
+    font-size: 22px;
+  }
+
+}

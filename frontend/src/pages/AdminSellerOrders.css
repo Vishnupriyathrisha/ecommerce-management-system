@@ -1,0 +1,417 @@
+/* =========================================
+   ADMIN SELLER ORDERS
+========================================= */
+
+.admin-seller-orders-page {
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* Header */
+.admin-seller-orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.admin-seller-orders-header h1 {
+  margin: 12px 0 6px;
+  font-size: 28px;
+  color: #111827;
+}
+
+.admin-seller-orders-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Back Button */
+.back-btn {
+  border: none;
+  background: transparent;
+  color: #374151;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  color: #111827;
+}
+
+/* Refresh */
+.seller-orders-refresh-btn {
+  border: none;
+  background: #111827;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.seller-orders-refresh-btn:hover {
+  background: #374151;
+}
+
+/* Seller Info */
+.seller-info-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 24px;
+}
+
+.seller-info-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #111827;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.seller-info-details {
+  flex: 1;
+}
+
+.seller-info-details h3 {
+  margin: 0 0 4px;
+  color: #111827;
+}
+
+.seller-info-details p {
+  margin: 0 0 3px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.seller-info-details span {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.seller-order-summary {
+  text-align: center;
+  padding: 0 20px;
+  border-left: 1px solid #e5e7eb;
+}
+
+.seller-order-summary strong {
+  display: block;
+  font-size: 24px;
+  color: #111827;
+}
+
+.seller-order-summary span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Orders List */
+.admin-seller-orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Order Card */
+.admin-seller-order-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Order Top */
+.admin-order-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.admin-order-top h3 {
+  margin: 0 0 5px;
+  font-size: 16px;
+  color: #111827;
+}
+
+.admin-order-top span {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Status */
+.admin-order-status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px !important;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+/* Status Colors */
+.admin-order-status.placed {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.admin-order-status.confirmed {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.admin-order-status.shipped {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+.admin-order-status.out-for-delivery {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+
+.admin-order-status.delivered {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.admin-order-status.cancelled {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Customer */
+.admin-order-customer {
+  padding: 16px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.admin-order-customer h4 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+.admin-order-customer p {
+  margin: 0 0 3px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.admin-order-customer span {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Products */
+.admin-seller-order-products {
+  padding: 16px 0;
+}
+
+.admin-seller-order-products h4 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: #374151;
+}
+
+/* Product Item */
+.admin-seller-product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.admin-product-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-product-info img,
+.admin-product-placeholder {
+  width: 55px;
+  height: 55px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.admin-product-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e5e7eb;
+  font-size: 22px;
+}
+
+.admin-product-info strong {
+  display: block;
+  color: #111827;
+  font-size: 14px;
+}
+
+.admin-product-info p {
+  margin: 5px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.admin-seller-product-item > strong {
+  color: #111827;
+  white-space: nowrap;
+}
+
+/* Bottom Details */
+.admin-seller-order-bottom {
+  display: flex;
+  justify-content: flex-end;
+  gap: 35px;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.admin-seller-order-bottom div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.admin-seller-order-bottom span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.admin-seller-order-bottom strong {
+  font-size: 14px;
+  color: #111827;
+}
+
+/* Empty */
+.seller-orders-empty {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.seller-orders-empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.seller-orders-empty h2 {
+  margin: 0 0 8px;
+  color: #111827;
+}
+
+.seller-orders-empty p {
+  margin: 0;
+  color: #6b7280;
+}
+
+/* Loading */
+.admin-seller-orders-loading {
+  padding: 50px;
+  text-align: center;
+  color: #6b7280;
+}
+
+/* Error */
+.seller-orders-error {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 14px 18px;
+  border-radius: 8px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+  .admin-seller-orders-page {
+    padding: 15px;
+  }
+
+  .admin-seller-orders-header {
+    flex-direction: column;
+  }
+
+  .seller-orders-refresh-btn {
+    width: 100%;
+  }
+
+  .seller-info-card {
+    align-items: flex-start;
+  }
+
+  .seller-order-summary {
+    margin-left: auto;
+    padding-right: 0;
+  }
+
+  .admin-order-top {
+    align-items: flex-start;
+  }
+
+  .admin-seller-order-bottom {
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 500px) {
+  .seller-info-card {
+    flex-wrap: wrap;
+  }
+
+  .seller-order-summary {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid #e5e7eb;
+    padding: 12px 0 0;
+    margin-top: 5px;
+  }
+
+  .admin-seller-order-card {
+    padding: 15px;
+  }
+
+  .admin-seller-product-item {
+    align-items: flex-start;
+  }
+
+  .admin-product-info img,
+  .admin-product-placeholder {
+    width: 45px;
+    height: 45px;
+  }
+}

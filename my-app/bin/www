@@ -1,0 +1,279 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require("../app");
+var debug = require("debug")("my-app:server");
+var http = require("http");
+var { Server } = require("socket.io");
+
+// Chat model
+var ChatMessage = require("../models/ChatMessage");
+
+/**
+ * Get port from environment
+ */
+
+var port = normalizePort(
+  process.env.PORT || "3000"
+);
+
+app.set("port", port);
+
+/**
+ * Create HTTP server
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Socket.IO setup
+ */
+
+var io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
+
+/**
+ * Socket connection
+ */
+
+io.on("connection", (socket) => {
+  console.log(
+    "User connected:",
+    socket.id
+  );
+
+  /**
+   * Join chat room
+   */
+
+  socket.on(
+    "joinRoom",
+    (roomId) => {
+      socket.join(roomId);
+
+      console.log(
+        `Socket ${socket.id} joined room ${roomId}`
+      );
+    }
+  );
+
+  /**
+   * Receive and save chat message
+   */
+
+  socket.on(
+    "supportMessage",
+    async (data) => {
+      try {
+        const {
+          roomId,
+          senderId,
+          senderRole,
+          message,
+        } = data;
+
+        /**
+         * Validate required data
+         */
+
+        if (
+          !roomId ||
+          !senderId ||
+          !senderRole ||
+          !message
+        ) {
+          console.log(
+            "Required chat data is missing"
+          );
+
+          return;
+        }
+
+        /**
+         * Create new message object
+         */
+
+        const newMessage = {
+          senderId: senderId,
+          senderRole: senderRole,
+          message: message,
+          createdAt: new Date(),
+        };
+
+        /**
+         * Add message to messages array
+         *
+         * If room does not exist:
+         * Create a new room document.
+         *
+         * If room already exists:
+         * Add the new message to
+         * the existing messages array.
+         */
+
+        const chat =
+          await ChatMessage.findOneAndUpdate(
+            {
+              roomId: roomId,
+            },
+            {
+              $push: {
+                messages: newMessage,
+              },
+            },
+            {
+              new: true,
+              upsert: true,
+              runValidators: true,
+            }
+          );
+
+        console.log(
+          "Message added successfully"
+        );
+
+        console.log(
+          "Room ID:",
+          chat.roomId
+        );
+
+        /**
+         * Send message only
+         * to users in this room
+         */
+
+        io.to(roomId).emit(
+          "receiveSupportMessage",
+          newMessage
+        );
+
+      } catch (error) {
+        console.error(
+          "Chat message error:",
+          error.message
+        );
+      }
+    }
+  );
+
+  /**
+   * User disconnect
+   */
+
+  socket.on(
+    "disconnect",
+    () => {
+      console.log(
+        "User disconnected:",
+        socket.id
+      );
+    }
+  );
+});
+
+/**
+ * Start server
+ */
+
+server.listen(port);
+
+server.on(
+  "error",
+  onError
+);
+
+server.on(
+  "listening",
+  onListening
+);
+
+/**
+ * Normalize port
+ */
+
+function normalizePort(val) {
+  var port = parseInt(
+    val,
+    10
+  );
+
+  if (isNaN(port)) {
+    return val;
+  }
+
+  if (port >= 0) {
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Server error handler
+ */
+
+function onError(error) {
+  if (
+    error.syscall !== "listen"
+  ) {
+    throw error;
+  }
+
+  var bind =
+    typeof port === "string"
+      ? "Pipe " + port
+      : "Port " + port;
+
+  switch (error.code) {
+    case "EACCES":
+      console.error(
+        bind +
+        " requires elevated privileges"
+      );
+
+      process.exit(1);
+      break;
+
+    case "EADDRINUSE":
+      console.error(
+        bind +
+        " is already in use"
+      );
+
+      process.exit(1);
+      break;
+
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Server listening handler
+ */
+
+function onListening() {
+  var addr =
+    server.address();
+
+  var bind =
+    typeof addr === "string"
+      ? "pipe " + addr
+      : "port " + addr.port;
+
+  console.log(
+    "Server is listening on " +
+    bind
+  );
+
+  debug(
+    "Listening on " + bind
+  );
+}

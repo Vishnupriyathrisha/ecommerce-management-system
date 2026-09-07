@@ -1,0 +1,298 @@
+.admin-dashboard {
+  width: 100%;
+  min-height: 100vh;
+  background: #f6f7f9;
+  padding: 35px;
+  box-sizing: border-box;
+}
+
+/* Header */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 30px;
+  color: #111;
+}
+
+.dashboard-header p {
+  margin: 7px 0 0;
+  color: #777;
+  font-size: 14px;
+}
+
+/* Refresh Button */
+
+.refresh-btn {
+  border: none;
+  background: #111;
+  color: #fff;
+  padding: 11px 18px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.refresh-btn:hover {
+  background: #333;
+}
+
+/* Statistics */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  min-width: 0;
+  background: #fff;
+  border-radius: 12px;
+  padding: 23px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.stat-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 10px;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+}
+
+.stat-card p {
+  margin: 0 0 6px;
+  color: #777;
+  font-size: 14px;
+}
+
+.stat-card h2 {
+  margin: 0;
+  font-size: 25px;
+  color: #111;
+}
+
+/* Order Statistics */
+
+.order-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.order-stat-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.order-icon {
+  font-size: 25px;
+}
+
+.order-stat-card p {
+  margin: 0 0 5px;
+  color: #777;
+  font-size: 14px;
+}
+
+.order-stat-card h3 {
+  margin: 0;
+  color: #111;
+  font-size: 22px;
+}
+
+/* Recent Orders */
+
+.recent-orders {
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-sizing: border-box;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-title h2 {
+  margin: 0;
+  color: #111;
+  font-size: 21px;
+}
+
+/* Table */
+
+.orders-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.orders-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 15px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+}
+
+.orders-table th {
+  font-size: 13px;
+  color: #777;
+  font-weight: 600;
+}
+
+.orders-table td {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Status */
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #eee;
+}
+
+.status-badge.placed,
+.status-badge.confirmed {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.delivered {
+  background: #e8f7ed;
+  color: #1b7a3a;
+}
+
+.status-badge.shipped,
+.status-badge.out_for_delivery {
+  background: #e8f0ff;
+  color: #2457a6;
+}
+
+.status-badge.cancelled {
+  background: #ffe9e9;
+  color: #c62828;
+}
+
+/* Empty */
+
+.empty-orders {
+  text-align: center;
+  padding: 40px;
+  color: #777;
+}
+
+/* Loading */
+
+.admin-dashboard-loading {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Error */
+
+.admin-dashboard-error {
+  margin: 40px;
+  padding: 20px;
+  border-radius: 8px;
+  background: #ffecec;
+  color: #c62828;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1100px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .order-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 25px 20px;
+  }
+
+  .dashboard-header {
+    gap: 15px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-dashboard {
+    padding: 20px 15px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 18px;
+  }
+
+  .recent-orders {
+    padding: 18px;
+  }
+
+  .refresh-btn {
+    width: 100%;
+  }
+}
+

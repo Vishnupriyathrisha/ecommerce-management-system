@@ -1,0 +1,211 @@
+.admin-support-tickets {
+  min-height: 100vh;
+  padding: 35px;
+  background: #f6f7f9;
+  box-sizing: border-box;
+}
+
+/* Header */
+.tickets-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.tickets-header h1 {
+  margin: 0;
+  font-size: 30px;
+  color: #222;
+}
+
+.tickets-header p {
+  margin: 7px 0 0;
+  color: #777;
+  font-size: 14px;
+}
+
+/* Refresh Button */
+.tickets-refresh-btn {
+  padding: 10px 17px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tickets-refresh-btn:hover {
+  background: #111;
+  color: #fff;
+}
+
+/* Table */
+.tickets-table-wrapper {
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.tickets-table {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: collapse;
+}
+
+.tickets-table thead {
+  background: #111;
+  color: #fff;
+}
+
+.tickets-table th,
+.tickets-table td {
+  padding: 15px 18px;
+  text-align: left;
+}
+
+.tickets-table th {
+  font-size: 13px;
+}
+
+.tickets-table td {
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Status */
+.ticket-status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #fff4d6;
+  color: #9a6700;
+}
+
+/* Empty */
+.tickets-empty {
+  background: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 14px;
+}
+
+.empty-icon {
+  font-size: 40px;
+}
+
+.tickets-empty h3 {
+  margin: 10px 0 5px;
+}
+
+.tickets-empty p {
+  color: #888;
+}
+
+/* Error */
+.tickets-error {
+  padding: 12px;
+  margin-bottom: 18px;
+  background: #fff0f0;
+  color: #d32f2f;
+  border-radius: 8px;
+}
+
+/* Loading */
+.admin-tickets-loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Assign Seller */
+.assign-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 180px;
+}
+
+.assign-section select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  background: #fff;
+  color: #333;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.assign-section select:focus {
+  border-color: #111;
+}
+
+.assign-section select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.assign-section small {
+  color: #777;
+  font-size: 11px;
+}
+
+/* Assigned User */
+.assigned-user {
+  color: #555;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Open Chat */
+.open-chat-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: 0.2s;
+}
+
+.open-chat-btn:hover {
+  background: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-support-tickets {
+    padding: 20px;
+  }
+
+  .tickets-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .tickets-header h1 {
+    font-size: 24px;
+  }
+
+  .tickets-refresh-btn {
+    width: 100%;
+  }
+
+  .tickets-table-wrapper {
+    border-radius: 10px;
+  }
+}

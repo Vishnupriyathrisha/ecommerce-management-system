@@ -1,0 +1,257 @@
+/* =================================
+   SELLER ADD PRODUCT
+================================= */
+
+.seller-add-product {
+  min-height: 100vh;
+  padding: 35px;
+  background: #f6f7f9;
+  box-sizing: border-box;
+}
+
+/* =================================
+   HEADER
+================================= */
+
+.seller-add-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.seller-add-header h1 {
+  margin: 0;
+  font-size: 30px;
+  color: #222;
+  font-weight: 700;
+}
+
+.seller-add-header p {
+  margin: 7px 0 0;
+  color: #777;
+  font-size: 14px;
+}
+
+/* =================================
+   BACK BUTTON
+================================= */
+
+.seller-back-btn {
+  padding: 10px 17px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.seller-back-btn:hover {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+/* =================================
+   FORM
+================================= */
+
+.seller-product-form {
+  max-width: 850px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* =================================
+   FORM GROUP
+================================= */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  color: #222;
+  font-size: 14px;
+  transition: 0.2s ease;
+  font-family: inherit;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #111;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+/* =================================
+   FORM ROW
+================================= */
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* =================================
+   ERROR
+================================= */
+
+.seller-form-error {
+  max-width: 850px;
+  margin-bottom: 18px;
+  padding: 12px 15px;
+  box-sizing: border-box;
+  border: 1px solid #ffcdd2;
+  border-radius: 8px;
+  background: #fff0f0;
+  color: #d32f2f;
+  font-size: 13px;
+}
+
+/* =================================
+   SUCCESS
+================================= */
+
+.seller-form-success {
+  max-width: 850px;
+  margin-bottom: 18px;
+  padding: 12px 15px;
+  box-sizing: border-box;
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  background: #f1faf3;
+  color: #16803c;
+  font-size: 13px;
+}
+
+/* =================================
+   ACTIONS
+================================= */
+
+.seller-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.seller-cancel-btn,
+.seller-submit-btn {
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.seller-cancel-btn {
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+}
+
+.seller-cancel-btn:hover {
+  background: #f5f5f5;
+}
+
+.seller-submit-btn {
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+}
+
+.seller-submit-btn:hover {
+  background: #333;
+}
+
+.seller-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 900px) {
+  .seller-add-product {
+    padding: 25px;
+  }
+
+  .seller-add-header h1 {
+    font-size: 26px;
+  }
+
+  .seller-product-form {
+    padding: 25px;
+  }
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+  .seller-add-product {
+    padding: 20px 15px;
+  }
+
+  .seller-add-header {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .seller-add-header h1 {
+    font-size: 24px;
+  }
+
+  .seller-back-btn {
+    padding: 9px 12px;
+  }
+
+  .seller-product-form {
+    padding: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .seller-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .seller-cancel-btn,
+  .seller-submit-btn {
+    width: 100%;
+  }
+}

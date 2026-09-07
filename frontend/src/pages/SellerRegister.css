@@ -1,0 +1,158 @@
+.seller-register-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 15px;
+  background: #f5f6f8;
+  box-sizing: border-box;
+}
+
+.seller-register-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 35px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.seller-register-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.seller-register-header h1 {
+  margin: 0 0 15px;
+  font-size: 30px;
+  color: #111;
+}
+
+.seller-register-header h1 span {
+  color: #666;
+}
+
+.seller-register-header h2 {
+  margin: 0 0 7px;
+  font-size: 23px;
+  color: #222;
+}
+
+.seller-register-header p {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.seller-form-group {
+  margin-bottom: 17px;
+}
+
+.seller-form-group label {
+  display: block;
+  margin-bottom: 7px;
+  color: #333;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.seller-form-group input,
+.seller-form-group textarea {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: 0.2s ease;
+}
+
+.seller-form-group textarea {
+  resize: vertical;
+}
+
+.seller-form-group input:focus,
+.seller-form-group textarea:focus {
+  border-color: #111;
+}
+
+.seller-register-btn {
+  width: 100%;
+  padding: 13px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 8px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.seller-register-btn:hover {
+  background: #333;
+}
+
+.seller-register-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.seller-register-error,
+.seller-register-success {
+  padding: 11px 13px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.seller-register-error {
+  background: #fff0f0;
+  color: #d32f2f;
+  border: 1px solid #ffcdd2;
+}
+
+.seller-register-success {
+  background: #eefaf2;
+  color: #16803c;
+  border: 1px solid #c8e6c9;
+}
+
+.seller-login-link {
+  margin-top: 20px;
+  text-align: center;
+  color: #777;
+  font-size: 13px;
+}
+
+.seller-login-link a {
+  color: #111;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.seller-login-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .seller-register-page {
+    padding: 20px 15px;
+  }
+
+  .seller-register-card {
+    padding: 25px 20px;
+  }
+
+  .seller-register-header h1 {
+    font-size: 27px;
+  }
+
+  .seller-register-header h2 {
+    font-size: 21px;
+  }
+}
