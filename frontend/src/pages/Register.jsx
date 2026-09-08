@@ -58,16 +58,13 @@ const Register = () => {
     try {
       setLoading(true);
 
-      const response = await api.post(
-  "/auth/register",
-  {
-    name: formData.name,
-    email: formData.email,
-    password: formData.password,
-    phone: formData.phone,
-    address: formData.address,
-  }
-);
+      const response = await api.post("/auth/register", {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        phone: formData.phone,
+        address: formData.address,
+      });
 
       setSuccess(
         response.data.message || "Registration successful!"
@@ -86,6 +83,8 @@ const Register = () => {
         navigate("/login");
       }, 1500);
     } catch (error) {
+      console.log("Registration Error:", error.response?.data);
+
       setError(
         error.response?.data?.message ||
           "Registration failed. Please try again."
@@ -98,7 +97,6 @@ const Register = () => {
   return (
     <div className="register-container">
       <div className="register-card">
-
         <h2>Create Account</h2>
 
         <p className="register-subtitle">
@@ -118,7 +116,6 @@ const Register = () => {
         )}
 
         <form onSubmit={handleSubmit}>
-
           {/* Name */}
           <div className="form-group">
             <label>Full Name *</label>
@@ -202,7 +199,9 @@ const Register = () => {
 
             <div className="password-wrapper">
               <input
-                type={showConfirmPassword ? "text" : "password"}
+                type={
+                  showConfirmPassword ? "text" : "password"
+                }
                 name="confirmPassword"
                 placeholder="Confirm your password"
                 value={formData.confirmPassword}
@@ -228,14 +227,12 @@ const Register = () => {
               ? "Creating Account..."
               : "Register"}
           </button>
-
         </form>
 
         <p className="login-link">
           Already have an account?{" "}
           <Link to="/login">Login</Link>
         </p>
-
       </div>
     </div>
   );
