@@ -35,23 +35,25 @@ const app = express();
 const server = http.createServer(app);
 
 // Socket.IO
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.FRONTEND_URL,
+];
+
 const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_URL,
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE"],
   },
 });
 
-// Make Socket.IO available to controllers
 setIO(io);
 
-// Database
 connectDB();
 
-// Middleware
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: allowedOrigins,
   })
 );
 app.use(express.json());

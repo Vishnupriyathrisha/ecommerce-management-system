@@ -2,6 +2,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const sendEmail = require("../utils/sendEmail");
 
 // Register
 const register = async (req, res) => {
@@ -250,9 +251,11 @@ const forgotPassword = async (req, res) => {
 
     const user = await User.findOne({ email });
 
+    // Generic response for security
     if (!user) {
-      return res.status(404).json({
-        message: "User not found",
+      return res.status(200).json({
+        message:
+          "If an account with this email exists, a password reset link has been sent.",
       });
     }
 
@@ -269,17 +272,33 @@ const forgotPassword = async (req, res) => {
     user.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
 
     await user.save();
+   
+    const resetUrl = `http://localhost:5173/reset-password/${resetToken}`;
 
-    // Development purpose
+    await sendEmail({
+    to: user.email,
+    subject: "Password Reset Request - E-Commerce Store",
+    html: `
+    <h2>Password Reset</h2>
+    <p>You requested to reset your password.</p>
+    <p>This link will expire in 15 minutes.</p>
+    <a href="${resetUrl}">
+      Reset Password
+    </a>
+    <p>If you did not request this, please ignore this email.</p>`,
+});
+    // TODO: Send resetToken through email
+    // Do NOT return resetToken in API response
+
     res.status(200).json({
-      message: "Password reset token generated successfully",
-      resetToken,
+      message:
+        "If an account with this email exists, a password reset link has been sent.",
     });
-
   } catch (error) {
+    console.error("Forgot password error:", error);
+
     res.status(500).json({
-      message: "Failed to process forgot password",
-      error: error.message,
+      message: "Unable to process password reset request",
     });
   }
 };
