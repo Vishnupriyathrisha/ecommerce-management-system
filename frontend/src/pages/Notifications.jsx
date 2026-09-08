@@ -22,9 +22,16 @@ const Notifications = () => {
       setUnreadCount(response.data.unreadCount || 0);
     } catch (error) {
       if (error.response?.status === 401) {
-        navigate("/login");
-        return;
-      }
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (user?.role === "seller") {
+    navigate("/seller/login");
+  } else {
+    navigate("/login");
+  }
+
+  return;
+}
 
       setError(
         error.response?.data?.message ||
