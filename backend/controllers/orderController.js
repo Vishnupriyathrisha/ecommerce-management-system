@@ -111,6 +111,15 @@ const createOrder = async (req, res) => {
         });
       }
 
+      if (
+  coupon.usageLimit !== null &&
+  coupon.usedCount >= coupon.usageLimit
+) {
+  return res.status(400).json({
+    message: "Coupon usage limit has been reached",
+  });
+}
+
       if (coupon.expiryDate && new Date() > coupon.expiryDate) {
         return res.status(400).json({
           message: "Coupon has expired",
@@ -160,6 +169,13 @@ const createOrder = async (req, res) => {
       paymentStatus: "PENDING",
       orderStatus: "PLACED",
     });
+
+    if (appliedCouponCode) {
+  await Coupon.findOneAndUpdate(
+    { code: appliedCouponCode },
+    { $inc: { usedCount: 1 } }
+  );
+}
 
     // =====================================================
     // REDUCE STOCK
