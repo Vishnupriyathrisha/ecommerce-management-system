@@ -87,6 +87,8 @@ if (buyers.length > 0) {
   }
 };
 
+
+}
 // Get All Products
 const getAllProducts = async (req, res) => {
   try {
@@ -96,22 +98,23 @@ const getAllProducts = async (req, res) => {
       isActive: true,
     };
 
+    const escapeRegex = (value) => {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+};
     // Search by product name
     if (search) {
-      filter.name = {
-        $regex: search,
-        $options: "i",
-      };
-    }
-
+  filter.name = {
+    $regex: escapeRegex(search),
+    $options: "i",
+  };
+}
     // Category filter
     if (category) {
-      filter.category = {
-        $regex: `^${category}$`,
-        $options: "i",
-      };
-    }
-
+  filter.category = {
+    $regex: `^${escapeRegex(category)}$`,
+    $options: "i",
+  };
+}
     // Price filter
     if (minPrice || maxPrice) {
       filter.price = {};
