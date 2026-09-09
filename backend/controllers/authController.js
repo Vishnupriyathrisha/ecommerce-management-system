@@ -15,6 +15,11 @@ const register = async (req, res) => {
       });
     }
 
+    if (password.length < 6) {
+  return res.status(400).json({
+    message: "Password must be at least 6 characters",
+  });
+}
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
@@ -57,11 +62,20 @@ const login = async (req, res) => {
 
     const user = await User.findOne({ email });
 
+    console.log("LOGIN USER:", user?.email);
+    console.log("IS BLOCKED:", user?.isBlocked);
+
     if (!user) {
       return res.status(401).json({
         message: "Invalid email or password",
       });
     }
+
+    if (user.isBlocked) {
+  return res.status(403).json({
+    message: "Your account has been blocked by the admin",
+  });
+}
 
     const isPasswordMatch = await bcrypt.compare(password, user.password);
 
@@ -273,7 +287,7 @@ const forgotPassword = async (req, res) => {
 
     await user.save();
    
-    const resetUrl = `http://localhost:5173/reset-password/${resetToken}`;
+    const resetUrl =`https://ecommerce-management-system-rho.vercel.app/reset-password/${resetToken}`;
 
     await sendEmail({
     to: user.email,
@@ -403,6 +417,9 @@ const resetPassword = async (req, res) => {
     }
 
     // Hash new password
+
+    console.log("Resetting password for:", user.email);
+ console.log("New password length:", newPassword.length);
     user.password = await bcrypt.hash(newPassword, 10);
 
     // Clear reset token
