@@ -9,6 +9,7 @@ const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
+const rateLimit = require("express-rate-limit");
 const connectDB = require("./config/db");
 const { setIO } = require("./config/socket");
 
@@ -59,6 +60,13 @@ app.use(
 );
 app.use(express.json());
 
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 20,
+  message: {
+    message: "Too many requests. Please try again later.",
+  },
+});
 // Socket.IO Authentication
 io.use(async (socket, next) => {
   try {
@@ -132,7 +140,7 @@ app.get("/", (req, res) => {
 });
 
 // Routes
-app.use("/api/auth", authRoutes);
+app.use("/api/auth", authLimiter, authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
